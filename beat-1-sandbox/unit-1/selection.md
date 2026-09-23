@@ -15,22 +15,42 @@ wrong label is not graded.
 
 **Issue link**
 
-[The individual Path Review issue page. A link to the repository or the issue list
-does not satisfy this field.]
+https://github.com/codepath/pathreview-ai301-fa26-s1/issues/74
 
 **Verdict output**
 
-[Your skill's live-mode output for this issue, pasted verbatim and ending with the
-fenced JSON verdict block. A summary does not satisfy this field.]
-
-**The verdict must record `accept` for this issue.** Choose an issue your own skill
-accepts. If your skill rejects every candidate you try, that is a signal about your
-rubric rather than about the issues: revise it and re-run — retries are unlimited and a
-partial re-run costs about $0.20 — or run the skill on different candidates. Output
-recording `reject` for the issue you chose earns no credit for this field.
-
-```
-paste the output here, including the closing JSON block
+```json
+{
+  "item": "codepath/pathreview-ai301-fa26-s1#74",
+  "checks": [
+    {
+      "name": "maintainer_alive",
+      "grade": "pass",
+      "evidence": "Andrew Burke committed to repo on 2026-09-16 (6 days ago); Aburke225 active on issues on 2026-09-22"
+    },
+    {
+      "name": "repo_in_use",
+      "grade": "pass",
+      "evidence": "Last push 2026-09-16; multiple commits in last month, well within 6-month threshold"
+    },
+    {
+      "name": "scope_fits",
+      "grade": "pass",
+      "evidence": "Specific bug fix: changes chunk.get() to handle None values in FaithfulnessChecker; single bounded task"
+    },
+    {
+      "name": "issue_unclaimed",
+      "grade": "pass",
+      "evidence": "No assignees; 0 comments; Path Review house rule ignores other student claims"
+    },
+    {
+      "name": "policy",
+      "grade": "pass",
+      "evidence": "No CONTRIBUTING.md forbidding AI; this is AI301 classroom repo where AI contributions expected"
+    }
+  ],
+  "verdict": "accept"
+}
 ```
 
 ---
@@ -41,44 +61,36 @@ Quote source text directly in each field below. Paraphrase does not satisfy them
 
 **Run history**
 
-[The agreement score of each run you did, in order. A single run is a complete answer if
-only one run occurred. **The last score in your list must match the agreement line in the
-`eval-run.txt` you committed** — that file is the record of your final run.]
+1. 11/20
+2. 4/5 (partial run)
+3. 15/20
 
 **Issue analysis**
 
-[One scored issue, identified by id (`issue-01` through `issue-20`; the `calib-`
-issues are not scored). State your rubric's decision, the gold label, and the
-reasoning that produced your rubric's result.]
+Issue ID: `issue-13`
+- Rubric decision: `accept`
+- Gold label: `reject`
+- Reasoning: Our rubric accepted it because it had "good first issue" and active maintainers, but it's actually a mega-issue/tracking issue for migrating the whole codebase, which the gold label rejects as too massive for a single contributor. Our `scope_fits` standard struggled to differentiate between a complex tracking issue and a simple task when labels can be misleading.
 
 **Check rationale**
 
-[One check from the `rubric.md` uploaded to `tools/issue-select/`, quoted as it is
-currently written, with the reasoning behind its current form.]
+Check: `scope_fits`
+Quote: `The issue has a "good first issue" or "help wanted" label, OR it describes a single actionable task/bug that a newcomer could understand without massive architectural changes.`
+Rationale: Originally, the check tried to reject mega-issues, but that caused false negatives on valid but brief issues. We loosened it to accept "good first issue" tags or simple tasks to ensure newcomers could find actionable bugs, though it risks letting complex issues slip through if they are mislabeled.
 
 **Trade-offs**
 
-[What the quoted check gives up. Any one of these is a complete answer: an issue whose
-result it changes, a canary you re-ran with `--only`, a case you accept it will miss, or a
-stated reason nothing changed elsewhere. "Nothing changed, and here is how I know" earns
-the point in full when the reason follows.]
+By loosening the `scope_fits` check to accept issues just because they have a "good first issue" label or seem like single tasks, we successfully stopped incorrectly rejecting `issue-01` and `issue-04` (which were valid tasks). However, the trade-off is that we now wrongly accept `issue-13`, which is a massive refactor disguised as a simple task. We traded precision (keeping out mega-issues) for recall (catching brief but valid issues).
 
 ---
 
 ## Selection rationale
 
-Graded on whether all three are answered, in your own words. Not on how good the
-reasoning is, and not on length — a short honest answer to each earns the full marks.
-This is also the basis for the claim comment you write in Unit 2.
-
 **Selection rationale**
 
-[Answer all three:
-
-1. The issue's fit to your interests and to the time available.
-2. What the verdict identified correctly, and what you weighed that the rubric could
-   not.
-3. The anticipated difficulty in claiming it.]
+1. The issue fits my interest in Python and fixing logical bugs. It specifically targets a TypeError crash handling `None` values, which is exactly the kind of small, bounded fix I have time for this week.
+2. The verdict correctly identified that the issue has a clear scope and active maintainers. However, what it could not weigh is the exact codebase structure required to fix it—I had to manually verify that the fix would be isolated and straightforward to test without spinning up a complex database.
+3. The anticipated difficulty in claiming it is very low. It has no assignees and zero active comments from non-students, and under the Path Review house rules, overlapping claims from other students do not block me from submitting a PR.
 
 ---
 
