@@ -1,12 +1,11 @@
-Replace this file with your unit-2 eval run.
-
-Generate it with `--save-run`: the harness writes this file itself, with
-a header recording the model, the tool it graded, and a fingerprint of
-each file in the run.
-
-    python3 run_eval.py <your flags> --save-run eval-run.txt
-
-A partial `--limit` or `--only` run refuses to write the file, so only a
-complete run can land here. Do not hand-edit it: the story of the runs it
-took belongs in this unit's write-up, in the four fields below it:
-Run history, Package analysis, Check rationale, and Trade-offs.
+{
+  "item": "https://github.com/codepath/pathreview-ai301-fa26-s1/issues/74",
+  "checks": [
+    {"name": "Environment check", "grade": "unclear", "evidence": "Not yet applicable: claim-only draft"},
+    {"name": "Steps followable", "grade": "unclear", "evidence": "Not yet applicable: claim-only draft"},
+    {"name": "Behavior matches", "grade": "unclear", "evidence": "Not yet applicable: claim-only draft"},
+    {"name": "Claim specific", "grade": "pass", "evidence": "Clearly identifies 'TypeError when chunk.get() handles None values in FaithfulnessChecker', specifies version (latest main), and commits to repro report without promising fix timeline"},
+    {"name": "Policy check", "grade": "pass", "evidence": "Repo CONTRIBUTING.md has no AI disclosure requirement; comment is professional, specific, and adheres to stated policies"}
+  ],
+  "verdict": "accept"
+}
